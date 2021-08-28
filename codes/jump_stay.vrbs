@@ -1,0 +1,10 @@
+input(Type a number: ,x)
+var(text,Not jumped)
+jump($x,==,1)
+    var(text,Jumped)
+output_ln($text)
+
+var(text,Not stayed)
+stay($x,==,1)
+    var(text,Stayed)
+output_ln($text)

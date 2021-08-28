@@ -1,0 +1,7 @@
+obj(person)
+obj_set(person,name,Vini)
+obj_set(person,age,26)
+obj_get(person,name,name)
+obj_get(person,age,age)
+output_ln($name)
+output($age)

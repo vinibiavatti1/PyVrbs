@@ -1,0 +1,4 @@
+goto(label)
+output(Skipped)
+label(label)
+output(Done)

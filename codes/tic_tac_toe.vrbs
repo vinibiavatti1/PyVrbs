@@ -1,0 +1,201 @@
+###############################################################################
+# Functions
+###############################################################################
+
+// Add rows
+def(create_board)
+    obj(board)
+    obj_set(board,11,0)
+    obj_set(board,12,0)
+    obj_set(board,13,0)
+    obj_set(board,21,0)
+    obj_set(board,22,0)
+    obj_set(board,23,0)
+    obj_set(board,31,0)
+    obj_set(board,32,0)
+    obj_set(board,33,0)
+end()
+
+// Print board
+def(print_board)
+    obj_get(board,11,p11)
+    obj_get(board,12,p12)
+    obj_get(board,13,p13)
+    obj_get(board,21,p21)
+    obj_get(board,22,p22)
+    obj_get(board,23,p23)
+    obj_get(board,31,p31)
+    obj_get(board,32,p32)
+    obj_get(board,33,p33)
+    output(|)
+    output($p11)
+    output(|)
+    output($p12)
+    output(|)
+    output($p13)
+    output_ln(|)
+    output(|)
+    output($p21)
+    output(|)
+    output($p22)
+    output(|)
+    output($p23)
+    output_ln(|)
+    output(|)
+    output($p31)
+    output(|)
+    output($p32)
+    output(|)
+    output($p33)
+    output_ln(|)
+end()
+
+// Check victory
+def(check_victory)
+    obj_get(board,11,p11)
+    obj_get(board,12,p12)
+    obj_get(board,13,p13)
+    obj_get(board,21,p21)
+    obj_get(board,22,p22)
+    obj_get(board,23,p23)
+    obj_get(board,31,p31)
+    obj_get(board,32,p32)
+    obj_get(board,33,p33)
+
+    // Check first line
+    float(count,0)
+    float(three,3)
+    stay($p11,==,$player)
+        inc($count,count)
+    stay($p12,==,$player)
+        inc($count,count)
+    stay($p13,==,$player)
+        inc($count,count)
+    if($count,==,$three,victory)
+
+    // Check second line
+    int(count,0)
+    stay($p21,==,$player)
+        inc($count,count)
+    stay($p22,==,$player)
+        inc($count,count)
+    stay($p23,==,$player)
+        inc($count,count)
+    if($count,==,$three,victory)
+
+    // Check third line
+    int(count,0)
+    stay($p31,==,$player)
+        inc($count,count)
+    stay($p32,==,$player)
+        inc($count,count)
+    stay($p33,==,$player)
+        inc($count,count)
+    if($count,==,$three,victory)
+
+    // Check first column
+    int(count,0)
+    stay($p11,==,$player)
+        inc($count,count)
+    stay($p21,==,$player)
+        inc($count,count)
+    stay($p31,==,$player)
+        inc($count,count)
+    if($count,==,$three,victory)
+
+    // Check second column
+    int(count,0)
+    stay($p12,==,$player)
+        inc($count,count)
+    stay($p22,==,$player)
+        inc($count,count)
+    stay($p32,==,$player)
+        inc($count,count)
+    if($count,==,$three,victory)
+
+    // Check third column
+    int(count,0)
+    stay($p13,==,$player)
+        inc($count,count)
+    stay($p23,==,$player)
+        inc($count,count)
+    stay($p33,==,$player)
+        inc($count,count)
+    if($count,==,$three,victory)
+
+    // Check diagonal
+    int(count,0)
+    stay($p11,==,$player)
+        inc($count,count)
+    stay($p22,==,$player)
+        inc($count,count)
+    stay($p33,==,$player)
+        inc($count,count)
+    if($count,==,$three,victory)
+
+    // Check inverse diagonal
+    int(count,0)
+    stay($p13,==,$player)
+        inc($count,count)
+    stay($p22,==,$player)
+        inc($count,count)
+    stay($p31,==,$player)
+        inc($count,count)
+    if($count,==,$three,victory)
+end()
+
+###############################################################################
+# Logic
+###############################################################################
+
+// Create lists
+call(create_board)
+
+// Print board
+call(print_board)
+
+str(player,X)
+label(loop)
+    output(Player )
+    output($player)
+    output_ln( turn)
+    input(Type the LINE: ,x)
+    input(Type the COLUMN: ,y)
+    parse_int($x,x)
+    parse_int($y,y)
+    stay($x,>,3)
+        int(x,3)
+    stay($y,>,3)
+        int(y,3)
+    stay($x,<,0)
+        int(x,0)
+    stay($y,<,0)
+        int(y,0)
+
+    str_concat($x,$y,coords)
+    obj_set(board,$coords,$player)
+    call(print_board)
+
+    call(check_victory)
+
+    if_else($player,==,X,a,b)
+    label(a)
+        str(player,O)
+        goto(loop)
+    label(b)
+        str(player,X)
+        goto(loop)
+
+###############################################################################
+# Exit labels
+###############################################################################
+
+label(error)
+    output(An error ocurred)
+    exit()
+
+label(victory)
+    output(Player )
+    output($player)
+    output( win!)
+    exit()

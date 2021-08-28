@@ -1,0 +1,4 @@
+str(x,My name is )
+str(y,Vini)
+str_concat($x,$y,z)
+output($z)

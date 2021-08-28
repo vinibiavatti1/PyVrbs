@@ -1,0 +1,3 @@
+str(txt,I am <age>)
+str_replace($txt,<age>,26,txt)
+output($txt)

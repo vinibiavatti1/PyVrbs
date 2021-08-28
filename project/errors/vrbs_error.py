@@ -1,0 +1,2 @@
+class VrbsError(Exception):
+    pass

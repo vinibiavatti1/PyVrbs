@@ -1,0 +1,18 @@
+input(Type a number: ,x)
+case($x,1,one)
+case($x,2,two)
+case($x,3,three)
+output(Invalid number)
+exit()
+
+label(one)
+    output(One)
+    exit()
+
+label(two)
+    output(Two)
+    exit()
+
+label(three)
+    output(Three)
+    exit()

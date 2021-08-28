@@ -1,0 +1,17 @@
+// $param_1 - Number to inc
+// $result - Result
+def(inc)
+    calc($param_1,+,1,result)
+end()
+
+int(param_1,0)
+
+// Calls
+call(inc)
+int(param_1,$result)
+call(inc)
+int(param_1,$result)
+call(inc)
+
+// Output
+output($result)

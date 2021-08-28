@@ -1,0 +1,23 @@
+def(one)
+    output_ln(IN ONE)
+    call(two)
+    output_ln(OUT ONE)
+end()
+
+
+def(two)
+    output_ln(IN TWO)
+    call(three)
+    output_ln(OUT TWO)
+end()
+
+
+def(three)
+    output_ln(IN THREE)
+    output_ln(OUT THREE)
+end()
+
+
+output_ln(BEGIN)
+call(one)
+output(END)

@@ -1,0 +1,14 @@
+input(Type a number: ,x)
+calc($x,%,2,mod)
+float(zero,0)
+if_else($mod,==,$zero,even,odd)
+
+// Even
+label(even)
+    output(Even!)
+    exit(0)
+
+// Odd
+label(odd)
+    output(Odd!)
+    exit(0)
