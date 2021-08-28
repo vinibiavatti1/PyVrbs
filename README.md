@@ -1,4 +1,4 @@
-# Py VRB Compiler
+# Py VRBS Compiler
 
 <p align="center">
 <img src="https://www.python.org/static/img/python-logo-large.c36dccadd999.png?1576869008" width="100px">
@@ -8,7 +8,7 @@
 
 ### About
 
-The VRB Script Language (VRBS) is a oldschool function based programming language created with Pyhton. This language has only one format to type code: Function (Callable) formats. Check the example bellow:
+The VRBS Script Language (VRBS) is a oldschool function based programming language created with Pyhton. This language has only one format to type code: Function (Callable) formats. Check the example bellow:
 
 VRBS Fibonacci
 ```vrbs
